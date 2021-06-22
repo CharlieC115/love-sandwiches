@@ -146,4 +146,21 @@ def main():
     update_worksheet(stock_data, 'stock')
 
 print('Welcome to Love Sandwiches Data Automation')
-main()
+stock_data = main()
+    
+def get_stock_values(data):
+    # stock = SHEET.worksheet('stock')
+
+    headings = [head for head in SHEET.worksheet('stock').row_values(1)]
+
+    stock = SHEET.worksheet('stock').get_all_values()
+    stock_row = stock[-1]
+
+    dictl = {}
+    for h, s in zip(headings, stock_row):
+        dictl[h] = int(s)
+
+    return dictl
+
+stock_values = get_stock_values(stock_data)
+print(stock_values)
