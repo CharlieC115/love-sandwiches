@@ -156,11 +156,11 @@ def get_stock_values(data):
     stock = SHEET.worksheet('stock').get_all_values()
     stock_row = stock[-1]
 
-    dictl = {}
-    for h, s in zip(headings, stock_row):
-        dictl[h] = int(s)
+    stock_dict = {}
+    for head, stock in zip(headings, stock_row):
+        stock_dict[head] = int(stock)
 
-    return dictl
+    return stock_dict
 
 stock_values = get_stock_values(stock_data)
 print(stock_values)
